@@ -531,7 +531,7 @@ void InferenceEnginePython::IEExecNetwork::createInferRequests(int num_requests)
 InferenceEnginePython::IENetwork
 InferenceEnginePython::IECore::readNetwork(const std::string& modelPath, const std::string& binPath) {
     InferenceEngine::CNNNetwork net = actual.ReadNetwork(modelPath, binPath);
-    net.reshape(InferenceEngine::InputShapes({"image", {3, 800, 1088}}));
+    net.reshape(InferenceEngine::ICNNNetwork::InputShapes{{"image", {3, 800, 1088}}});
     return IENetwork(std::make_shared<InferenceEngine::CNNNetwork>(net));
 }
 
